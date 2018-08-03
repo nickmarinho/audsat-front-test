@@ -1,3 +1,20 @@
-<p>
-  header works!
-</p>
+<header>
+  <img src="assets/images/audsat-logo.png" alt="AudSat Logo" />
+  <menu>
+    <ul>
+      <li>
+          <a [routerLink]="['/']">Home</a>
+      </li>
+      <li>Clientes
+        <ul>
+          <li>
+            <a [routerLink]="['/clientes/lista']">Busca de Clientes</a>
+          </li>
+          <li>
+              <a [routerLink]="['/clientes/cadastro']">Cadastrar</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </menu>
+</header>
