@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
+  totalCadastrados: number;
 
   constructor() { }
 
   ngOnInit() {
+    this.totalCadastrados = 16;
   }
 
 }
