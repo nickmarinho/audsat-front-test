@@ -4,7 +4,7 @@ import { Clientes } from '../../shared/models/clientes.model';
 @Component({
   selector: 'app-ficha',
   templateUrl: './ficha.component.html',
-  styleUrls: ['./ficha.component.css']
+  styleUrls: ['./ficha.component.scss']
 })
 export class FichaComponent implements OnInit {
   cliente: Clientes;
