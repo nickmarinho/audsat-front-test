@@ -1,0 +1,13 @@
+$buttoncolor: #088C45;
+.button {
+  background: $buttoncolor;
+  border-color: $buttoncolor;
+}
+
+.button:hover {
+  background: darken($color: $buttoncolor, $amount: 5%);
+}
+
+.rounded {
+  border-radius: 12px;
+}

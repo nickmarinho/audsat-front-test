@@ -5,7 +5,7 @@ import { Clientes } from '../../../shared/models/clientes.model';
 @Component({
   selector: 'app-busca-clientes-form',
   templateUrl: './busca-clientes-form.component.html',
-  styleUrls: ['./busca-clientes-form.component.css']
+  styleUrls: ['./busca-clientes-form.component.scss']
 })
 export class BuscaClientesFormComponent implements OnInit {
   clientesForm: FormGroup;

@@ -5,7 +5,7 @@ import { Clientes } from '../../shared/models/clientes.model';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent implements OnInit {
   clientesForm: FormGroup;
