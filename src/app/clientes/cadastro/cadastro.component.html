@@ -1,3 +1,17 @@
-<p>
-  cadastro works!
-</p>
+<h3>Cadastro de clientes</h3>
+
+<form class="form-horizontal" [formGroup]="clientesForm" novalidate>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Nome" type="text" id="nome" name="nome" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientes.nome" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Email" type="text" id="email" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientes.email" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Telefone" type="text" id="telefone" name="telefone" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientes.telefone" />
+    </mat-form-field>
+    
+    <app-busca-cep></app-busca-cep>
+
+    <input type="submit" value="Cadastrar" class="btn btn-primary" (click)="cadastrar()" />
+</form>

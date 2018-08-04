@@ -1,3 +1,13 @@
-<p>
-  ficha works!
-</p>
+<h3>Ficha do Cliente</h3>
+
+<ul>
+  <li>Nome: {{ cliente.nome }}</li>
+  <li>Email: {{ cliente.email }}</li>
+  <li>Telefone: {{ cliente.telefone }}</li>
+  <li>Endereço: {{ cliente.cep }} {{ cliente.endereco }}</li>
+  <li>Data de Cadastro: {{ cliente.dataCadastro }}</li>
+  <li>Status: {{ cliente.status }}</li>
+</ul>
+
+<input type="button" value="Remover" class="btn btn-primary" (click)="remover()" />
+<input type="button" value="Editar" class="btn btn-primary" (click)="editar()" />

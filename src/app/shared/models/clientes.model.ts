@@ -2,6 +2,8 @@ export class Clientes {
   nome: string;
   email: string;
   cep: string;
+  endereco: string;
   telefone: string;
-  status: boolean;
+  dataCadastro: string;
+  status: string;
 }
