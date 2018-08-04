@@ -9,6 +9,7 @@ import { FichaComponent } from './clientes/ficha/ficha.component';
 import { ListaComponent } from './clientes/lista/lista.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { BuscaClientesFormComponent } from './clientes/lista/busca-clientes-form/busca-clientes-form.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HeaderComponent } from './header/header.component';
     ListaComponent,
     FichaComponent,
     CadastroComponent,
-    BuscaCepComponent
+    BuscaCepComponent,
+    BuscaClientesFormComponent
   ],
   imports: [
     BrowserModule,
