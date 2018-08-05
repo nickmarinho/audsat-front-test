@@ -9,22 +9,25 @@ export class ClientesService {
     return this.http.get(`http://localhost:3000/clientes`);
   }
 
-  public getCliente(userId) {
-    return this.http.get(`http://localhost:3000/clientes/${userId}`);
+  public consultaCep(cep) {
+    return this.http.get(`http://viacep.com.br/ws/${cep}/json/`);
   }
 
-  public addCliente (user) {
-    return this.http.post(`http://localhost:3000/clientes`, user);
+  public getCliente(clienteId) {
+    return this.http.get(`http://localhost:3000/clientes/${clienteId}`);
   }
 
-  public updateCliente (user) {
-    return this.http.put(`http://localhost:3000/clientes//${user.id}`, user);
+  public addCliente (cliente) {
+    return this.http.post(`http://localhost:3000/clientes`, cliente);
   }
 
-  public delCliente(user) {
-    user.status = 'i';
+  public updateCliente (cliente) {
+    return this.http.put(`http://localhost:3000/clientes/${cliente.id}`, cliente);
+  }
 
-    return this.http.put(`http://localhost:3000/clientes//${user.id}`, user);
+  public delCliente(cliente) {
+    cliente.status = 'inativo';
+    return this.http.put(`http://localhost:3000/clientes//${cliente.id}`, cliente);
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClientesService } from '../../service/clientes.service';
 import { Clientes } from '../../shared/models/clientes.model';
 
 @Component({
@@ -8,27 +10,60 @@ import { Clientes } from '../../shared/models/clientes.model';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent implements OnInit {
-  clientesForm: FormGroup;
-  @Input() clientes: Clientes;
+  clienteForm: FormGroup;
+  @Input() cliente: any;
 
   constructor(
-    private formBuilder: FormBuilder
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private clientesService: ClientesService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params && params['id'] !== undefined) {
+        this.loadCliente(params['id']);
+      }
+    });
+
     this.criarFormGroup();
   }
 
-  private criarFormGroup() {
-    this.clientes = new Clientes();
-    this.clientesForm = this.formBuilder.group({});
-    this.clientesForm.addControl('nome', new FormControl('', null));
-    this.clientesForm.addControl('email', new FormControl('', null));
-    this.clientesForm.addControl('telefone', new FormControl('', null));
-    this.clientesForm.addControl('cep', new FormControl('', null));
+  public loadCliente(idCliente) {
+    this.clientesService.getCliente(idCliente).subscribe(
+      data => {
+        if (data && data[0] !== undefined) {
+          this.cliente = data[0];
+        }
+      }
+    );
   }
 
-  cadastrar() {
+  private criarFormGroup() {
+    this.cliente = new Clientes();
+    this.clienteForm = this.formBuilder.group({});
+    this.clienteForm.addControl('nome', new FormControl('', null));
+    this.clienteForm.addControl('email', new FormControl('', null));
+    this.clienteForm.addControl('telefone', new FormControl('', null));
+    this.clienteForm.addControl('cep', new FormControl('', null));
+    this.clienteForm.addControl('status', new FormControl('', null));
+  }
+
+  public cadastrar(cliente) {
+    if (cliente.id) {
+      this.clientesService.updateCliente(cliente).subscribe(
+        data => {
+          this.router.navigate(['clientes', cliente.id]);
+        }
+      );
+    } else {
+      this.clientesService.addCliente(cliente).subscribe(
+        data => {
+          this.router.navigate(['clientes', cliente.id]);
+        }
+      );
+    }
 
   }
 }

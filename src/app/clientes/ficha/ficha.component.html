@@ -1,20 +1,19 @@
 <h3>Ficha do Cliente</h3>
 
 <ng-container *ngIf="cliente">
-<pre>
-  {{cliente}}
-</pre>
-
-
   <ul>
     <li>Nome: {{ cliente.nome }}</li>
     <li>Email: {{ cliente.email }}</li>
     <li>Telefone: {{ cliente.telefone }}</li>
-    <li>Endereço: {{ cliente.cep }} {{ cliente.endereco }}</li>
+    <li>Endereço: {{ cliente.cep }} <span *ngIf="cliente.endereco">{{ cliente.endereco.logradouro }}, {{ cliente.endereco.bairro }} - {{ cliente.endereco.localidade }} - {{ cliente.endereco.uf }}</span> </li>
     <li>Data de Cadastro: {{ cliente.dataCadastro }}</li>
     <li>Status: {{ cliente.status }}</li>
   </ul>
   
   <input type="button" value="Remover" class="btn btn-primary button" (click)="remover(cliente)" />
   <input type="button" value="Editar" class="btn btn-primary button" (click)="editar(cliente.id)" />
+</ng-container>
+
+<ng-container *ngIf="!cliente">
+  <h3>Cliente não encontrado</h3>
 </ng-container>

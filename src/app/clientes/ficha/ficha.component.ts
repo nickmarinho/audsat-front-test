@@ -18,21 +18,29 @@ export class FichaComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.loadCliente(params['id']);
+      if (params && params['id'] !== undefined) {
+        this.loadCliente(params['id']);
+      }
     });
   }
 
   public loadCliente(idCliente) {
     this.clientesService.getCliente(idCliente).subscribe(
       data => {
-        this.cliente = data[0];
+        if (data && data[0] !== undefined) {
+          this.cliente = data[0];
+
+          this.clientesService.consultaCep(data[0].cep).subscribe(
+            endereco => {
+              this.cliente.endereco = endereco;
+            }
+          );
+        }
       }
     );
   }
 
   editar(idCliente) {
-    console.log('idCliente', idCliente);
-    
     this.router.navigate(['clientes/cadastro', idCliente]);
   }
 

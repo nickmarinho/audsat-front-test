@@ -1,0 +1,21 @@
+{
+  "name": "ks-node-api",
+  "version": "1.0.0",
+  "description": "Simple API to Keep Simple Angular 4 test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luciano Marinho",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "swagger-ui-express": "^3.0.8"
+  },
+  "start": "nodemon server.js"
+}
