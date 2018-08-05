@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Clientes } from '../../shared/models/clientes.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClientesService } from '../../service/clientes.service';
 
 @Component({
   selector: 'app-ficha',
@@ -7,28 +8,37 @@ import { Clientes } from '../../shared/models/clientes.model';
   styleUrls: ['./ficha.component.scss']
 })
 export class FichaComponent implements OnInit {
-  cliente: Clientes;
+  cliente: any;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private clientesService: ClientesService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.cliente = {
-      nome: 'Luciano Marinho',
-      email: 'nickmarinho@gmail.com',
-      telefone: '+55 11 944 499 306',
-      cep: '03938-090',
-      endereco: 'travessa xavier sampaio, 136',
-      dataCadastro: '2018-08-04 12:00',
-      status: 'ativo'
-    };
+    this.route.params.subscribe(params => {
+      this.loadCliente(params['id']);
+    });
   }
 
-  remover() {
-
+  public loadCliente(idCliente) {
+    this.clientesService.getCliente(idCliente).subscribe(
+      data => {
+        this.cliente = data[0];
+      }
+    );
   }
 
-  editar() {
+  editar(idCliente) {
+    console.log('idCliente', idCliente);
+    
+    this.router.navigate(['clientes/cadastro', idCliente]);
+  }
 
+  remover(cliente) {
+    this.clientesService.delCliente(cliente);
+    this.router.navigate(['clientes']);
   }
 
 }

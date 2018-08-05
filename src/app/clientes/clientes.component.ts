@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientesService } from '../service/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -7,11 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
   totalCadastrados: number;
+  clientes: any;
 
-  constructor() { }
+  constructor(private clientesService: ClientesService) { }
 
   ngOnInit() {
-    this.totalCadastrados = 16;
+    this.loadClientes();
+  }
+
+  public loadClientes() {
+    this.clientesService.getClientes().subscribe(
+      data => {
+        this.clientes = JSON.stringify(data);
+        this.totalCadastrados = this.clientes.lentgh;
+        console.log('this.clientes', this.clientes);
+        console.log('this.totalCadastrados', this.totalCadastrados);
+      }
+    );
   }
 
 }

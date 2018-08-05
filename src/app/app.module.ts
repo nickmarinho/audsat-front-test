@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatOptionModule, MatSelectModule } from '@angular/material';
@@ -13,6 +14,7 @@ import { BuscaClientesFormComponent } from './clientes/lista/busca-clientes-form
 import { ListaComponent } from './clientes/lista/lista.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { ClientesService } from './service/clientes.service';
 
 
 @NgModule({
@@ -35,9 +37,12 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ClientesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,11 +16,15 @@ const routes: Routes = [
     component: ListaComponent
   },
   {
-    path: 'clientes/ficha',
+    path: 'clientes/:id',
     component: FichaComponent
   },
   {
     path: 'clientes/cadastro',
+    component: CadastroComponent
+  },
+  {
+    path: 'clientes/cadastro/:id',
     component: CadastroComponent
   },
   {
