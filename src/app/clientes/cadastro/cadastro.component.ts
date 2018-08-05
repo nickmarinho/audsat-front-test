@@ -33,8 +33,8 @@ export class CadastroComponent implements OnInit {
   public loadCliente(idCliente) {
     this.clientesService.getCliente(idCliente).subscribe(
       data => {
-        if (data && data[0] !== undefined) {
-          this.cliente = data[0];
+        if (data && data !== undefined) {
+          this.cliente = data;
         }
       }
     );

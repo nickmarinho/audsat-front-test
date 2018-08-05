@@ -27,15 +27,13 @@ export class FichaComponent implements OnInit {
   public loadCliente(idCliente) {
     this.clientesService.getCliente(idCliente).subscribe(
       data => {
-        if (data && data[0] !== undefined) {
-          this.cliente = data[0];
+        this.cliente = data;
 
-          this.clientesService.consultaCep(data[0].cep).subscribe(
-            endereco => {
-              this.cliente.endereco = endereco;
-            }
-          );
-        }
+        this.clientesService.consultaCep(this.cliente.cep).subscribe(
+          endereco => {
+            this.cliente.endereco = endereco;
+          }
+        );
       }
     );
   }
