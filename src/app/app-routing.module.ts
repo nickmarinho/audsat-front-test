@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BuscaCepComponent } from './clientes/busca-cep/busca-cep.component';
 import { CadastroComponent } from './clientes/cadastro/cadastro.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FichaComponent } from './clientes/ficha/ficha.component';
@@ -12,14 +11,6 @@ const routes: Routes = [
     component: ClientesComponent
   },
   {
-    path: 'clientes/lista',
-    component: ListaComponent
-  },
-  {
-    path: 'clientes/:id',
-    component: FichaComponent
-  },
-  {
     path: 'clientes/cadastro',
     component: CadastroComponent
   },
@@ -28,8 +19,12 @@ const routes: Routes = [
     component: CadastroComponent
   },
   {
-    path: 'clientes/busca-cep',
-    component: BuscaCepComponent
+    path: 'clientes/lista',
+    component: ListaComponent
+  },
+  {
+    path: 'clientes/:id',
+    component: FichaComponent
   },
   {
     path: '',

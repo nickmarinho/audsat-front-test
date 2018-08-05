@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClientesService } from '../../service/clientes.service';
 import { Clientes } from '../../shared/models/clientes.model';
 
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -58,9 +59,11 @@ export class CadastroComponent implements OnInit {
         }
       );
     } else {
+      cliente.status = 'ativo';
+      cliente.dataCadastro = new Date();
       this.clientesService.addCliente(cliente).subscribe(
         data => {
-          this.router.navigate(['clientes', cliente.id]);
+          this.router.navigate(['clientes/lista']);
         }
       );
     }
