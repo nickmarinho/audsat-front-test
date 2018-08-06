@@ -49,6 +49,7 @@ export class ClientesListaComponent implements OnInit {
 
   public filtrarClientes(clientesFiltrados) {
     this.clientes = clientesFiltrados;
+    this.fullClientes = clientesFiltrados;
   }
 
 }

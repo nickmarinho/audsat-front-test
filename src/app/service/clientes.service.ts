@@ -29,7 +29,9 @@ export class ClientesService {
       cliente.cep = 'undefined';
     }
 
-    return this.http.get<Clientes[]>(`http://localhost:3000/clientes/filtrar/nome/${cliente.nome}/email/${cliente.email}/cep/${cliente.cep}`);
+    return this.http.get<Clientes[]>(
+      `http://localhost:3000/clientes/filtrar/nome/${cliente.nome}/email/${cliente.email}/cep/${cliente.cep}`
+    );
   }
 
   public addCliente (cliente) {
