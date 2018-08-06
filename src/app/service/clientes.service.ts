@@ -27,7 +27,7 @@ export class ClientesService {
 
   public delCliente(cliente) {
     cliente.status = 'inativo';
-    return this.http.put(`http://localhost:3000/clientes//${cliente.id}`, cliente);
+    return this.http.put(`http://localhost:3000/clientes/${cliente.id}`, cliente);
   }
 
 }

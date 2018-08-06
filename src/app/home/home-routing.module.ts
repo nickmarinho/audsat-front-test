@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'home',
     component: HomeComponent
@@ -13,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CadastroRoutingModule { }
+export class HomeRoutingModule { }

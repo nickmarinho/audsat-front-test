@@ -4,11 +4,11 @@ import * as moment from 'moment';
 import { ClientesService } from '../../service/clientes.service';
 
 @Component({
-  selector: 'app-ficha',
-  templateUrl: './ficha.component.html',
-  styleUrls: ['./ficha.component.scss']
+  selector: 'app-clientes-ficha',
+  templateUrl: './clientes-ficha.component.html',
+  styleUrls: ['./clientes-ficha.component.scss']
 })
-export class FichaComponent implements OnInit {
+export class ClientesFichaComponent implements OnInit {
   cliente: any;
 
   constructor(
@@ -41,7 +41,7 @@ export class FichaComponent implements OnInit {
   }
 
   editar(idCliente) {
-    this.router.navigate(['clientes/cadastro', idCliente]);
+    this.router.navigate(['clientes/clientes-cadastro', idCliente]);
   }
 
   remover(cliente) {

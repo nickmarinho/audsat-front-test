@@ -26,7 +26,7 @@ export class ClientesListaComponent implements OnInit {
     );
   }
   public ficha(clienteId) {
-    this.router.navigate(['clientes/', clienteId]);
+    this.router.navigate(['clientes/clientes-ficha', clienteId]);
   }
 
 

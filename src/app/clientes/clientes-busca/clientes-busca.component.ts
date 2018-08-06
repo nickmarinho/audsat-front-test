@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Clientes } from '../../../shared/models/clientes.model';
+import { Clientes } from '../../shared/models/clientes.model';
 
 @Component({
-  selector: 'app-busca-clientes-form',
-  templateUrl: './busca-clientes-form.component.html',
-  styleUrls: ['./busca-clientes-form.component.scss']
+  selector: 'app-clientes-busca',
+  templateUrl: './clientes-busca.component.html',
+  styleUrls: ['./clientes-busca.component.scss']
 })
-export class BuscaClientesFormComponent implements OnInit {
+export class ClientesBuscaComponent implements OnInit {
   clientesForm: FormGroup;
 
   @Input() clientes: Clientes;

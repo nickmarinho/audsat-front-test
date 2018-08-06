@@ -6,11 +6,11 @@ import { Clientes } from '../../shared/models/clientes.model';
 
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.scss']
+  selector: 'app-clientes-cadastro',
+  templateUrl: './clientes-cadastro.component.html',
+  styleUrls: ['./clientes-cadastro.component.scss']
 })
-export class CadastroComponent implements OnInit {
+export class ClientesCadastroComponent implements OnInit {
   clienteForm: FormGroup;
   @Input() cliente: any;
 
@@ -55,7 +55,7 @@ export class CadastroComponent implements OnInit {
     if (cliente.id) {
       this.clientesService.updateCliente(cliente).subscribe(
         data => {
-          this.router.navigate(['clientes', cliente.id]);
+          this.router.navigate(['clientes/clientes-ficha', cliente.id]);
         }
       );
     } else {
@@ -63,7 +63,7 @@ export class CadastroComponent implements OnInit {
       cliente.dataCadastro = new Date();
       this.clientesService.addCliente(cliente).subscribe(
         data => {
-          this.router.navigate(['clientes/lista']);
+          this.router.navigate(['clientes/clientes-lista']);
         }
       );
     }
