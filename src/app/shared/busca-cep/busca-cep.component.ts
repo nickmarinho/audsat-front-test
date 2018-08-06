@@ -25,10 +25,14 @@ export class BuscaCepComponent implements OnInit, OnChanges {
   }
 
   public consultaCep(cep) {
-    this.cepService.consultaCep(this.cliente.cep).subscribe(
-      endereco => {
-        this.cliente.endereco = endereco;
-      }
-    );
+    if (cep !== undefined && cep.length === 8) {
+
+      this.cepService.consultaCep(cep).subscribe(
+        endereco => {
+          this.cliente.endereco = endereco;
+        }
+      );
+    }
+
   }
 }

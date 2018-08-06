@@ -49,7 +49,7 @@ export class ClientesFichaComponent implements OnInit {
 
   remover(cliente) {
     this.clientesService.delCliente(cliente);
-    this.router.navigate(['clientes']);
+    this.router.navigate(['clientes/clientes-lista']);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientesService } from '../../service/clientes.service';
 import { Clientes } from '../../shared/models/clientes.model';
@@ -46,10 +46,10 @@ export class ClientesCadastroComponent implements OnInit {
   private criarFormGroup() {
     this.cliente = new Clientes();
     this.clienteForm = this.formBuilder.group({});
-    this.clienteForm.addControl('nome', new FormControl('', null));
-    this.clienteForm.addControl('email', new FormControl('', null));
-    this.clienteForm.addControl('telefone', new FormControl('', null));
-    this.clienteForm.addControl('cep', new FormControl('', null));
+    this.clienteForm.addControl('nome', new FormControl('', Validators.required));
+    this.clienteForm.addControl('email', new FormControl('', Validators.email));
+    this.clienteForm.addControl('telefone', new FormControl('', Validators.required));
+    this.clienteForm.addControl('cep', new FormControl('', Validators.required));
     this.clienteForm.addControl('status', new FormControl('', null));
   }
 

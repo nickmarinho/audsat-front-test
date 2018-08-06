@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskModule } from 'ngx-mask';
 import { CepService } from '../service/cep.service';
 import { ClientesService } from '../service/clientes.service';
 import { BuscaCepComponent } from '../shared/busca-cep/busca-cep.component';
@@ -22,7 +23,8 @@ import { ClientesComponent } from './clientes.component';
     MatInputModule,
     MatSelectModule,
     MatOptionModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   exports: [],
   providers: [

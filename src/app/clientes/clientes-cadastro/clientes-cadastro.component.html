@@ -6,15 +6,15 @@
       <input matInput placeholder="Nome" type="text" id="nome" name="nome" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.nome" />
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput [disabled]="isEmailDisabled" placeholder="Email" type="text" id="email" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.email" />
+      <input matInput [disabled]="isEmailDisabled" placeholder="Email" type="text" id="email" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.email" email required />
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Telefone" type="text" id="telefone" name="telefone" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.telefone" />
+      <input matInput placeholder="Telefone" type="text" id="telefone" name="telefone" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.telefone" mask="900000000" />
     </mat-form-field>
   </div>
   
   <div class="busca-cep-form">
-      <app-busca-cep [cliente]="cliente"></app-busca-cep>
+    <app-busca-cep [cliente]="cliente"></app-busca-cep>
   </div>
   
   <ng-container *ngIf="cliente.id">
@@ -25,13 +25,13 @@
           <mat-option value="inativo">inativo</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <input type="submit" value="Atualizar" class="btn btn-primary button rounded float-right" (click)="cadastrar(cliente)" />
+      
+      <button type="submit" class="btn btn-primary button rounded float-right" (click)="cadastrar(cliente)">Atualizar</button>
     </div>
   </ng-container>
   
   <ng-container *ngIf="!cliente.id">
-      <input type="submit" value="Cadastrar" class="btn btn-primary button rounded float-right" (click)="cadastrar(cliente)" />
+    <button type="submit" class="btn btn-primary button rounded float-right" (click)="cadastrar(cliente)">Cadastrar</button>
   </ng-container>
-
+  
 </form>

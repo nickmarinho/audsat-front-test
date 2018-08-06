@@ -6,6 +6,7 @@
     name="cep" 
     (blur)="consultaCep(cliente.cep)"
     [ngModelOptions]="{standalone: true}" 
-    [(ngModel)]="cliente.cep" />
+    [(ngModel)]="cliente.cep"
+    mask="00000000" />
 </mat-form-field>
 <ng-container *ngIf="cliente.endereco">{{ cliente.endereco.logradouro }}, {{ cliente.endereco.bairro }} - {{ cliente.endereco.localidade }} - {{ cliente.endereco.uf }}</ng-container>
