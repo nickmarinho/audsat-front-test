@@ -1,6 +1,8 @@
 <h3>Busca de clientes</h3>
 
-<app-clientes-busca></app-clientes-busca>
+<app-clientes-busca 
+  [clientes]="clientes"
+  (filtrarClientesEmitter)="filtrarClientes($event)"></app-clientes-busca>
 
 <ng-container *ngIf="clientes && clientes.length > 0">
   <table class="table table-hover">

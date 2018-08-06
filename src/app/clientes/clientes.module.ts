@@ -7,6 +7,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { CepService } from '../service/cep.service';
 import { ClientesService } from '../service/clientes.service';
 import { BuscaCepComponent } from '../shared/busca-cep/busca-cep.component';
+import { FilterPipe } from '../shared/pipes/filter.pipe';
 import { ClientesBuscaComponent } from './clientes-busca/clientes-busca.component';
 import { ClientesCadastroComponent } from './clientes-cadastro/clientes-cadastro.component';
 import { ClientesFichaComponent } from './clientes-ficha/clientes-ficha.component';
@@ -37,7 +38,8 @@ import { ClientesComponent } from './clientes.component';
     ClientesCadastroComponent,
     ClientesFichaComponent,
     ClientesListaComponent,
-    ClientesBuscaComponent
+    ClientesBuscaComponent,
+    FilterPipe
   ]
 })
 export class ClientesModule { }
