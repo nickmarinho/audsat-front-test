@@ -42,4 +42,12 @@ export class ClientesBuscaComponent implements OnInit {
     );
   }
 
+  limpar() {
+    this.clientesService.getClientes().subscribe(
+      clientes => {
+        this.filtrarClientesEmitter.emit(clientes);
+      }
+    );
+  }
+
 }
