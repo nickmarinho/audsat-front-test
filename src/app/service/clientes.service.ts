@@ -18,6 +18,20 @@ export class ClientesService {
     return this.http.get<Clientes>(`http://localhost:3000/clientes/${clienteId}`);
   }
 
+  public filtrarCliente(cliente) {
+    if (cliente.nome === '') {
+      cliente.nome = 'undefined';
+    }
+    if (cliente.email === '') {
+      cliente.email = 'undefined';
+    }
+    if (cliente.cep === '') {
+      cliente.cep = 'undefined';
+    }
+
+    return this.http.get<Clientes[]>(`http://localhost:3000/clientes/filtrar/nome/${cliente.nome}/email/${cliente.email}/cep/${cliente.cep}`);
+  }
+
   public addCliente (cliente) {
     return this.http.post(`http://localhost:3000/clientes`, cliente);
   }

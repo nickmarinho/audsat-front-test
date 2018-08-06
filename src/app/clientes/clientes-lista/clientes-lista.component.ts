@@ -47,8 +47,8 @@ export class ClientesListaComponent implements OnInit {
     this.router.navigate(['clientes/clientes-ficha', clienteId]);
   }
 
-  public filtrarClientes(e) {
-    console.log('e', e);
+  public filtrarClientes(clientesFiltrados) {
+    this.clientes = clientesFiltrados;
   }
 
 }

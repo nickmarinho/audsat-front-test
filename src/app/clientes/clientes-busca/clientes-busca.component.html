@@ -1,12 +1,12 @@
 <form class="form-horizontal" [formGroup]="clientesBuscaForm" novalidate>
-    <mat-form-field class="full-width">
-        <input matInput placeholder="Nome" type="text" id="nome" name="nome" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientesBusca.nome" />
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input matInput placeholder="Email" type="text" id="email" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientesBusca.email" />
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input matInput placeholder="CEP" type="text" id="cep" name="cep" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientesBusca.cep" />
-    </mat-form-field>
-    <input type="submit" value="Buscar" class="btn btn-primary button" (click)="buscar()" />
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Nome" type="text" id="nome" name="nome" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientesBusca.nome" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email" type="text" id="email" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientesBusca.email" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="CEP" type="text" id="cep" name="cep" [ngModelOptions]="{standalone: true}" [(ngModel)]="clientesBusca.cep" />
+  </mat-form-field>
+  <input type="submit" value="Buscar" class="btn btn-primary button" (click)="buscar()" />
 </form>

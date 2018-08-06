@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ClientesService } from '../../service/clientes.service';
 import { Clientes } from '../../shared/models/clientes.model';
 
 @Component({
@@ -9,13 +10,15 @@ import { Clientes } from '../../shared/models/clientes.model';
 })
 export class ClientesBuscaComponent implements OnInit {
   clientesBuscaForm: FormGroup;
+  clientesBusca: Clientes;
+  clientesFiltrados: any;
 
   @Input() clientes: Clientes;
-  @Input() clientesBusca: Clientes;
-  @Output() filtrarClientesEmitter: EventEmitter<string> = new EventEmitter();
+  @Output() filtrarClientesEmitter: EventEmitter<Clientes[]> = new EventEmitter<Clientes[]>();
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private clientesService: ClientesService
   ) { }
 
   ngOnInit() {
@@ -23,7 +26,7 @@ export class ClientesBuscaComponent implements OnInit {
   }
 
   private criarFormGroup() {
-    this.clientes = new Clientes();
+    this.clientesBusca = new Clientes();
     this.clientesBuscaForm = this.formBuilder.group({});
     this.clientesBuscaForm.addControl('nome', new FormControl('', null));
     this.clientesBuscaForm.addControl('email', new FormControl('', null));
@@ -31,7 +34,12 @@ export class ClientesBuscaComponent implements OnInit {
   }
 
   buscar() {
-    this.filtrarClientesEmitter.emit();
+    this.clientesService.filtrarCliente(this.clientesBusca).subscribe(
+      clientesFiltrados => {
+        this.filtrarClientesEmitter.emit(clientesFiltrados);
+        this.clientesBusca = new Clientes();
+      }
+    );
   }
 
 }

@@ -36,6 +36,33 @@ router.get('/page/:page', function(req, res) {
   console.log(message);
 });
 
+router.get('/filtrar/nome/:clienteNome/email/:clienteEmail/cep/:clienteCep/', function(req, res) {
+  var clientesList = [];
+  var clientesData = fs.readFileSync(clientesDbFile, 'utf8') ? JSON.parse(fs.readFileSync(clientesDbFile, 'utf8')) : [];
+  var clienteNome = req.params.clienteNome;
+  var clienteEmail = req.params.clienteEmail;
+  var clienteCep = req.params.clienteCep;
+  
+  for (var d = 0, len = clientesData.length; d < len; d += 1) {
+    if (clienteNome !== 'undefined' && clientesData[d].nome.toLowerCase().includes(clienteNome.toLowerCase())) {
+      console.log('clientesData[d].nome', clientesData[d].nome);
+      clientesList.push(clientesData[d]);
+    }
+    else if (clienteEmail !== 'undefined' && clientesData[d].email.toLowerCase().includes(clienteEmail.toLowerCase())) {
+      console.log('clientesData[d].email', clientesData[d].email);
+      clientesList.push(clientesData[d]);
+    }
+    else if (clienteCep !== 'undefined' && clientesData[d].cep.toLowerCase().includes(clienteCep.toLowerCase())) {
+      console.log('clientesData[d].cep', clientesData[d].cep);
+      clientesList.push(clientesData[d]);
+    }
+  }
+  
+  let message = 'Filtrando clientes';
+  console.log(message);
+  res.send(clientesList);
+});
+
 router.get('/:clienteId', function(req, res) {
   var clientesData = fs.readFileSync(clientesDbFile, 'utf8') ? JSON.parse(fs.readFileSync(clientesDbFile, 'utf8')) : [];
   var clienteId = req.params.clienteId;
