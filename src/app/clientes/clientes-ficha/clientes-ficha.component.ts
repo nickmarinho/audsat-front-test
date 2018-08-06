@@ -48,8 +48,9 @@ export class ClientesFichaComponent implements OnInit {
   }
 
   remover(cliente) {
-    this.clientesService.delCliente(cliente);
-    this.router.navigate(['clientes/clientes-lista']);
+    this.clientesService.delCliente(cliente).subscribe(data => {
+      this.router.navigate(['clientes/clientes-lista']);
+    });
   }
 
 }

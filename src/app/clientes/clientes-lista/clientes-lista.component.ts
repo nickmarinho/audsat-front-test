@@ -22,20 +22,27 @@ export class ClientesListaComponent implements OnInit {
     this.loadClientesPage(this.page);
     this.loadClientes();
   }
+
+  public checkAtivo(cliente) {
+    return cliente.status === 'ativo';
+  }
+
   public loadClientesPage(page) {
     if (page !== undefined) {
       this.page = page;
     }
 
     this.clientesService.getClientesPage(this.page).subscribe(clientesList => {
-        this.clientes = clientesList;
+        this.clientes = clientesList.filter(this.checkAtivo);
     });
   }
+
   public loadClientes() {
     this.clientesService.getClientes().subscribe(clientesList => {
-        this.fullClientes = clientesList;
+        this.fullClientes = clientesList.filter(this.checkAtivo);
     });
   }
+
   public ficha(clienteId) {
     this.router.navigate(['clientes/clientes-ficha', clienteId]);
   }
