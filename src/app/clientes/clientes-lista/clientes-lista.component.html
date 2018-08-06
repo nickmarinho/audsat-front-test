@@ -23,4 +23,13 @@
       </tr>
     </tbody>
   </table>
+  <ngb-pagination *ngIf="clientes && clientes.length && fullClientes && fullClientes.length"
+    class="d-flex justify-content-center"
+    [boundaryLinks]="true"
+    [collectionSize]="fullClientes.length"
+    [maxSize]="5"
+    [(page)]="page"
+    [pageSize]="5"
+    (pageChange)="loadClientesPage($event)"></ngb-pagination>
+
 </ng-container>

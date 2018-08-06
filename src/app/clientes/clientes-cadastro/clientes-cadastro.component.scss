@@ -12,6 +12,17 @@ $buttoncolor: #088C45;
   border-radius: 12px;
 }
 
+.float-right{
+  float:right;
+}
+
 .clear {
   clear: both;
+}
+
+.cadastro-form,
+.busca-cep-form,
+.status-action {
+  display:block;
+  clear:all;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { CepService } from '../../service/cep.service';
 import { ClientesService } from '../../service/clientes.service';
 import { Clientes } from '../../shared/models/clientes.model';
 
@@ -15,6 +16,7 @@ export class ClientesFichaComponent implements OnInit {
   constructor(
     private router: Router,
     private clientesService: ClientesService,
+    private cepService: CepService,
     private route: ActivatedRoute
   ) { }
 
@@ -32,7 +34,7 @@ export class ClientesFichaComponent implements OnInit {
         this.cliente = data;
         this.cliente.dataCadastro = moment(this.cliente.dataCadastro).format('DD/MM/YYYY - HH:MM');
 
-        this.clientesService.consultaCep(this.cliente.cep).subscribe(
+        this.cepService.consultaCep(this.cliente.cep).subscribe(
           endereco => {
             this.cliente.endereco = endereco;
           }

@@ -1,31 +1,37 @@
 <h3>Cadastro de clientes</h3>
 
 <form class="form-horizontal" [formGroup]="clienteForm" novalidate>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Nome" type="text" id="nome" name="nome" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.nome" />
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Email" type="text" id="email" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.email" />
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Telefone" type="text" id="telefone" name="telefone" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.telefone" />
-  </mat-form-field>
+  <div class="cadastro-form">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Nome" type="text" id="nome" name="nome" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.nome" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput [disabled]="isEmailDisabled" placeholder="Email" type="text" id="email" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.email" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Telefone" type="text" id="telefone" name="telefone" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.telefone" />
+    </mat-form-field>
+  </div>
   
-  <app-busca-cep [cliente]="cliente"></app-busca-cep>
+  <div class="busca-cep-form">
+      <app-busca-cep [cliente]="cliente"></app-busca-cep>
+  </div>
   
   <ng-container *ngIf="cliente.id">
-    <mat-form-field class="clear">
-      <mat-select placeholder="Status" id="status" name="status" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.status">
-        <mat-option value="ativo">ativo</mat-option>
-        <mat-option value="inativo">inativo</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="status-action">
+      <mat-form-field class="clear">
+        <mat-select placeholder="Status" id="status" name="status" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.status">
+          <mat-option value="ativo">ativo</mat-option>
+          <mat-option value="inativo">inativo</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <input type="submit" value="Atualizar" class="btn btn-primary button" (click)="cadastrar(cliente)" />
+      <input type="submit" value="Atualizar" class="btn btn-primary button rounded float-right" (click)="cadastrar(cliente)" />
+    </div>
   </ng-container>
   
   <ng-container *ngIf="!cliente.id">
-      <input type="submit" value="Cadastrar" class="btn btn-primary button" (click)="cadastrar(cliente)" />
+      <input type="submit" value="Cadastrar" class="btn btn-primary button rounded float-right" (click)="cadastrar(cliente)" />
   </ng-container>
 
 </form>

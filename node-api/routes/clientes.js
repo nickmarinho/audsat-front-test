@@ -12,6 +12,30 @@ router.get('/', function(req, res) {
   console.log(message);
 });
 
+router.get('/page/:page', function(req, res) {
+  var clientes = fs.readFileSync(clientesDbFile, 'utf8') ? JSON.parse(fs.readFileSync(clientesDbFile, 'utf8')) : [];
+
+  var totalUsers = clientes.length,
+      pageSize = 5,
+      pageCount = totalUsers/pageSize,
+      currentPage = req.params.page ? Number(req.params.page) : 1,
+      clientesArrays = [], 
+      clientesList = [];
+
+  //split list into groups
+  while (clientes.length > 0) {
+    clientesArrays.push(clientes.splice(0, pageSize));
+  }
+
+  //show list of clientes from group
+  clientesList = clientesArrays[Number(currentPage) - 1];
+  
+  res.send(clientesList);
+
+  let message = 'Listing page: ' + currentPage + ' of clientes';
+  console.log(message);
+});
+
 router.get('/:clienteId', function(req, res) {
   var clientesData = fs.readFileSync(clientesDbFile, 'utf8') ? JSON.parse(fs.readFileSync(clientesDbFile, 'utf8')) : [];
   var clienteId = req.params.clienteId;

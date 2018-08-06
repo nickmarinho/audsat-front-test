@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CepService } from '../service/cep.service';
 import { ClientesService } from '../service/clientes.service';
 import { BuscaCepComponent } from '../shared/busca-cep/busca-cep.component';
 import { ClientesBuscaComponent } from './clientes-busca/clientes-busca.component';
@@ -19,11 +21,13 @@ import { ClientesComponent } from './clientes.component';
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    NgbModule.forRoot()
   ],
   exports: [],
   providers: [
-    ClientesService
+    ClientesService,
+    CepService
   ],
   declarations: [
     BuscaCepComponent,

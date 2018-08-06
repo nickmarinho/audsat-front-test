@@ -10,20 +10,31 @@ import { Clientes } from '../../shared/models/clientes.model';
 })
 export class ClientesListaComponent implements OnInit {
   clientes: Clientes[];
+  fullClientes: Clientes[];
+  page = 1;
+
   constructor(
     private router: Router,
     private clientesService: ClientesService
   ) { }
 
   ngOnInit() {
+    this.loadClientesPage(this.page);
     this.loadClientes();
   }
+  public loadClientesPage(page) {
+    if (page !== undefined) {
+      this.page = page;
+    }
+
+    this.clientesService.getClientesPage(this.page).subscribe(clientesList => {
+        this.clientes = clientesList;
+    });
+  }
   public loadClientes() {
-    this.clientesService.getClientes().subscribe(
-      data => {
-        this.clientes = data;
-      }
-    );
+    this.clientesService.getClientes().subscribe(clientesList => {
+        this.fullClientes = clientesList;
+    });
   }
   public ficha(clienteId) {
     this.router.navigate(['clientes/clientes-ficha', clienteId]);

@@ -1,3 +1,11 @@
 <mat-form-field class="clear">
-    <input matInput placeholder="CEP" type="text" id="cep" name="cep" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente.cep" />
+  <input matInput 
+    placeholder="CEP" 
+    type="text" 
+    id="cep" 
+    name="cep" 
+    (blur)="consultaCep(cliente.cep)"
+    [ngModelOptions]="{standalone: true}" 
+    [(ngModel)]="cliente.cep" />
 </mat-form-field>
+<ng-container *ngIf="cliente.endereco">{{ cliente.endereco.logradouro }}, {{ cliente.endereco.bairro }} - {{ cliente.endereco.localidade }} - {{ cliente.endereco.uf }}</ng-container>

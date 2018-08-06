@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Clientes } from '../shared/models/clientes.model';
-import { Endereco } from '../shared/models/endereco.model';
 
 @Injectable()
 export class ClientesService {
@@ -11,8 +10,8 @@ export class ClientesService {
     return this.http.get<Clientes[]>(`http://localhost:3000/clientes`);
   }
 
-  public consultaCep(cep) {
-    return this.http.get<Endereco>(`http://viacep.com.br/ws/${cep}/json/`);
+  public getClientesPage(page) {
+    return this.http.get<Clientes[]>(`http://localhost:3000/clientes/page/${page}`);
   }
 
   public getCliente(clienteId) {

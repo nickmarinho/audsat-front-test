@@ -13,6 +13,7 @@ import { Clientes } from '../../shared/models/clientes.model';
 export class ClientesCadastroComponent implements OnInit {
   clienteForm: FormGroup;
   @Input() cliente: Clientes;
+  isEmailDisabled = false;
 
   constructor(
     private router: Router,
@@ -25,6 +26,7 @@ export class ClientesCadastroComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params && params['id'] !== undefined) {
         this.loadCliente(params['id']);
+        this.isEmailDisabled = true;
       }
     });
 
