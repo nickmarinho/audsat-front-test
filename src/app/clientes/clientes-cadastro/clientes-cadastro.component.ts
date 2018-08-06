@@ -12,7 +12,7 @@ import { Clientes } from '../../shared/models/clientes.model';
 })
 export class ClientesCadastroComponent implements OnInit {
   clienteForm: FormGroup;
-  @Input() cliente: any;
+  @Input() cliente: Clientes;
 
   constructor(
     private router: Router,
@@ -67,6 +67,5 @@ export class ClientesCadastroComponent implements OnInit {
         }
       );
     }
-
   }
 }

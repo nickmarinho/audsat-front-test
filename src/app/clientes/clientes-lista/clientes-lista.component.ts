@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from '../../service/clientes.service';
+import { Clientes } from '../../shared/models/clientes.model';
 
 @Component({
   selector: 'app-clientes-lista',
@@ -8,7 +9,7 @@ import { ClientesService } from '../../service/clientes.service';
   styleUrls: ['./clientes-lista.component.scss']
 })
 export class ClientesListaComponent implements OnInit {
-  clientes: any;
+  clientes: Clientes[];
   constructor(
     private router: Router,
     private clientesService: ClientesService
@@ -20,7 +21,6 @@ export class ClientesListaComponent implements OnInit {
   public loadClientes() {
     this.clientesService.getClientes().subscribe(
       data => {
-        // this.clientes = JSON.stringify(data);
         this.clientes = data;
       }
     );

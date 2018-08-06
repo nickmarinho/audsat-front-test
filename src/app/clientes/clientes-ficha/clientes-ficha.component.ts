@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { ClientesService } from '../../service/clientes.service';
+import { Clientes } from '../../shared/models/clientes.model';
 
 @Component({
   selector: 'app-clientes-ficha',
@@ -9,7 +10,7 @@ import { ClientesService } from '../../service/clientes.service';
   styleUrls: ['./clientes-ficha.component.scss']
 })
 export class ClientesFichaComponent implements OnInit {
-  cliente: any;
+  cliente: Clientes;
 
   constructor(
     private router: Router,

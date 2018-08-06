@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../service/clientes.service';
+import { Clientes } from '../shared/models/clientes.model';
 
 @Component({
   selector: 'app-clientes',
@@ -8,7 +9,7 @@ import { ClientesService } from '../service/clientes.service';
 })
 export class ClientesComponent implements OnInit {
   totalCadastrados: number;
-  clientes: any;
+  clientes: Clientes[];
 
   constructor(private clientesService: ClientesService) { }
 
@@ -19,10 +20,8 @@ export class ClientesComponent implements OnInit {
   public loadClientes() {
     this.clientesService.getClientes().subscribe(
       data => {
-        this.clientes = JSON.stringify(data);
-        this.totalCadastrados = this.clientes.lentgh;
-        console.log('this.clientes', this.clientes);
-        console.log('this.totalCadastrados', this.totalCadastrados);
+        this.clientes = data;
+        this.totalCadastrados = data.length;
       }
     );
   }

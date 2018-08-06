@@ -1,20 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Clientes } from '../shared/models/clientes.model';
+import { Endereco } from '../shared/models/endereco.model';
 
 @Injectable()
 export class ClientesService {
   constructor(private http: HttpClient) { }
 
   public getClientes() {
-    return this.http.get(`http://localhost:3000/clientes`);
+    return this.http.get<Clientes[]>(`http://localhost:3000/clientes`);
   }
 
   public consultaCep(cep) {
-    return this.http.get(`http://viacep.com.br/ws/${cep}/json/`);
+    return this.http.get<Endereco>(`http://viacep.com.br/ws/${cep}/json/`);
   }
 
   public getCliente(clienteId) {
-    return this.http.get(`http://localhost:3000/clientes/${clienteId}`);
+    return this.http.get<Clientes>(`http://localhost:3000/clientes/${clienteId}`);
   }
 
   public addCliente (cliente) {
