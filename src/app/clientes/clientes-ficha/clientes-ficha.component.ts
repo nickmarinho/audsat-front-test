@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { CepService } from '../../service/cep.service';
-import { ClientesService } from '../../service/clientes.service';
+import { BuscaCepService } from '../../shared/busca-cep/busca-cep.service';
 import { Clientes } from '../../shared/models/clientes.model';
+import { ClientesService } from '../clientes.service';
 
 @Component({
   selector: 'app-clientes-ficha',
@@ -16,7 +16,7 @@ export class ClientesFichaComponent implements OnInit {
   constructor(
     private router: Router,
     private clientesService: ClientesService,
-    private cepService: CepService,
+    private buscaCepService: BuscaCepService,
     private route: ActivatedRoute
   ) { }
 
@@ -34,7 +34,7 @@ export class ClientesFichaComponent implements OnInit {
         this.cliente = data;
         this.cliente.dataCadastro = moment(this.cliente.dataCadastro).format('DD/MM/YYYY - HH:MM');
 
-        this.cepService.consultaCep(this.cliente.cep).subscribe(
+        this.buscaCepService.consultarCep(this.cliente.cep).subscribe(
           endereco => {
             this.cliente.endereco = endereco;
           }

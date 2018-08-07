@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { CepService } from '../../service/cep.service';
 import { Clientes } from '../models/clientes.model';
+import { BuscaCepService } from './busca-cep.service';
 
 @Component({
   selector: 'app-busca-cep',
@@ -10,29 +10,29 @@ import { Clientes } from '../models/clientes.model';
 export class BuscaCepComponent implements OnInit, OnChanges {
   @Input() cliente: Clientes;
 
-  constructor(private cepService: CepService) { }
+  constructor(private buscaCepService: BuscaCepService) { }
 
   ngOnInit() {
-    if (this.cliente.cep !== undefined) {
-      this.consultaCep(this.cliente.cep);
-    }
+    this.carregarCep();
   }
 
   ngOnChanges() {
-    if (this.cliente.cep !== undefined) {
-      this.consultaCep(this.cliente.cep);
-    }
+    this.carregarCep();
   }
 
-  public consultaCep(cep) {
+  public consultarCep(cep) {
     if (cep !== undefined && cep.length === 8) {
-
-      this.cepService.consultaCep(cep).subscribe(
+      this.buscaCepService.consultarCep(cep).subscribe(
         endereco => {
           this.cliente.endereco = endereco;
         }
       );
     }
+  }
 
+  public carregarCep() {
+    if (this.cliente.cep !== undefined) {
+      this.consultarCep(this.cliente.cep);
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientesService } from '../../service/clientes.service';
 import { Clientes } from '../../shared/models/clientes.model';
+import { ClientesService } from '../clientes.service';
 
 @Component({
   selector: 'app-clientes-lista',
